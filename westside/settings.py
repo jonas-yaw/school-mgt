@@ -141,3 +141,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://obscure-savannah-12473.herokuapp.com'
+]
