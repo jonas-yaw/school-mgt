@@ -1,1 +1,1 @@
-web: gunicorn westside.wsgi
+web:gunicorn westside.wsgi
