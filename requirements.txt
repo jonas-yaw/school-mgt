@@ -10,8 +10,10 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 dj-database-url==1.0.0
 Django==4.1
+django-heroku==0.3.1
 django-import-export==2.8.0
 django-on-heroku==1.1.2
+django-utils-six==2.0
 et-xmlfile==1.1.0
 Faker==14.1.0
 gunicorn==19.9.0
@@ -25,9 +27,9 @@ odfpy==1.4.1
 openpyxl==3.0.9
 outcome==1.1.0
 pandas==1.4.1
+psycopg2==2.9.3
 psycopg2-binary==2.9.3
 pycparser==2.21
-pyodbc==4.0.32
 pyOpenSSL==22.0.0
 PySocks==1.7.1
 python-dateutil==2.8.2
