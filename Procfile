@@ -1,2 +1,3 @@
-release: python manage.py migrate --no-input
-web: gunicorn westside.wsgi
+web: gunicorn westside.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
