@@ -90,9 +90,9 @@ def Student_population(request):
     labels = []
     data = []
 
-    querySet = Student.objects.values('year').annotate(class_population=Count('year')).order_by('-class_population')
+    querySet = Student.objects.values('student_class').annotate(class_population=Count('student_class')).order_by('-class_population')
     for x in querySet:
-        labels.append('Year ' + x['year'])
+        labels.append('student_class ' + x['student_class'])
         data.append(x['class_population'])
 
     return JsonResponse(data={

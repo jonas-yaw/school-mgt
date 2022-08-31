@@ -381,7 +381,7 @@ ul{
 .modal {
     display: none; 
     position: fixed; 
-    padding-top: 50px;
+    padding-top: 30px;
     left: 0; 
     top: 0;
     width: 100%;
@@ -393,7 +393,7 @@ ul{
     position: relative; 
     background-color: white; 
     /* backdrop-filter: blur(5px); */
-    padding: 40px; 
+    padding: 35px; 
     margin: auto; 
     width: 35%;  
     -webkit-animation-name: animatetop;
@@ -410,6 +410,10 @@ ul{
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s;
+  }
+
+  .student-modal-cnt{
+    width: 50%;
   }
 
   .close-btn:hover {
@@ -431,7 +435,7 @@ ul{
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 
@@ -439,7 +443,7 @@ ul{
     padding: 1%;
     border: 1px solid black;
     font-size: 18px;
-    margin-bottom: 0%;
+    margin: 2%;
 }
 
 .payment-form input:focus{
@@ -454,6 +458,18 @@ ul{
     padding: 8px 14px;
     background-color: orange;
     text-align: center;
+}
+
+.inner-form-div{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-margin-div{
+    border: 1px solid red;
+    display: block;
 }
 
 .modal-form h2{
