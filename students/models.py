@@ -12,6 +12,7 @@ class Student(models.Model):
     mother_contact = models.CharField(max_length=255, blank=True)
     father_name = models.CharField(max_length=255, blank=True)
     father_contact = models.CharField(max_length=255, blank=True)
+    place_of_residence = models.CharField(max_length=255, blank=True)
     date_enrolled = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
