@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 from django.urls import reverse
 
-class Receipts(models.Model):
+class Receipt(models.Model):
     student_id = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)

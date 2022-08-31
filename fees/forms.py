@@ -1,4 +1,4 @@
-from .models import Receipts
+from .models import Receipt
 from django import forms
 
 class ReceiptsForm(forms.ModelForm):
@@ -10,5 +10,5 @@ class ReceiptsForm(forms.ModelForm):
     term = forms.CharField(max_length=5)
 
     class Meta:
-        model = Receipts
+        model = Receipt
         fields = ('student_id','first_name','last_name','student_class','fee_type','term')

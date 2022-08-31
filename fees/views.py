@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from students.models import Student
 from .forms import ReceiptsForm
-from .models import Receipts ,FeesCatalogue
+from .models import Receipt,FeesCatalogue
 
 def receipts_list_and_create(request):
     form = ReceiptsForm(request.POST or None)
@@ -12,7 +12,7 @@ def receipts_list_and_create(request):
         
         if querySet is not None:        
             def get_balance():
-                return Receipts.objects.filter(id=instance.student_id,
+                return Receipt.objects.filter(id=instance.student_id,
                 student_class=instance.student_class ,
                 academic_year=instance.academic_year,
                 term =instance.term)[:1]
@@ -39,6 +39,6 @@ def receipts_list_and_create(request):
 
 
     # notice this comes after saving the form to pick up new objects
-    objects = Receipts.objects.all()
+    objects = Receipt.objects.all()
     return render(request, 'receipt_list.html', {'objects': objects, 'form': form})
 
