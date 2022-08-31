@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import FeesCatalogue,Receipts
 
-# Register your models here.
+admin.site.register(Receipts)
+admin.site.register(FeesCatalogue)
