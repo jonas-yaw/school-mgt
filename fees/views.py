@@ -20,7 +20,9 @@ def receipts_list_and_create(request):
             def get_default_balance():
                 return FeesCatalogue.objects.filter(student_class=instance.student_class ,
                 academic_year=instance.academic_year,
-                term =instance.term)[:1]
+                term =instance.term,
+                fee_type = instance.fee_type
+                )[:1]
     
             balance_result_1 = get_balance()
             previous_balance = balance_result_1['Balance']
