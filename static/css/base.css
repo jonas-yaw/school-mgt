@@ -467,6 +467,10 @@ ul{
     align-items: center;
 }
 
+.inner-form-div div {
+    margin: 1%;
+}
+
 .btn-margin-div{
     border: 1px solid red;
     display: block;

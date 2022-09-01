@@ -1,5 +1,9 @@
+from email.policy import default
+from random import choices
 from .models import Receipt
 from django import forms
+
+
 
 class ReceiptsForm(forms.ModelForm):
     student_id = forms.CharField(max_length=255)

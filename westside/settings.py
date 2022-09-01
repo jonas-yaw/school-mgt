@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig', #users
     'students.apps.StudentsConfig', #students
     'fees.apps.FeesConfig', #fees 
+    'staff.apps.StaffConfig', #staff 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

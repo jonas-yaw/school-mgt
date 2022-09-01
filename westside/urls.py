@@ -28,7 +28,8 @@ urlpatterns = [
     path('users/',include('users.urls')),
     path('users/',include('django.contrib.auth.urls')),
     path('',include('students.urls')),
-    path('',include('fees.urls'))
+    path('',include('fees.urls')),
+    path('',include('staff.urls'))
 ]
 
 

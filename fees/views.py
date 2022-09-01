@@ -15,6 +15,7 @@ def receipts_list_and_create(request):
                 return Receipt.objects.filter(id=instance.student_id,
                 student_class=instance.student_class ,
                 academic_year=instance.academic_year,
+                fee_type = instance.fee_type ,
                 term =instance.term)[:1]
             
             def get_default_balance():

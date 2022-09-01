@@ -9,11 +9,14 @@ class Receipt(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     student_class = models.CharField(max_length=20)
+
+    #fee_choices = ['BUS','School Fees']
+
     fee_type = models.CharField(max_length=20)
     balance = models.FloatField(max_length=255)
     academic_year = models.CharField(max_length=20)
     term = models.CharField(max_length=5)
-    payment_date = models.DateField(auto_now_add=True)
+    payment_date = models.DateTimeField(auto_now_add=True)
     receipient =  models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     def __str__(self):
