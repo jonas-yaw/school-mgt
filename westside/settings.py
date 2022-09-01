@@ -145,5 +145,5 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://sure-start-is.herokuapp.com/'
+    'https://sure-start-is.herokuapp.com'
 ]
