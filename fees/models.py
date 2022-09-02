@@ -9,9 +9,6 @@ class Receipt(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     student_class = models.CharField(max_length=20)
-
-    #fee_choices = ['BUS','School Fees']
-
     fee_type = models.CharField(max_length=20)
     balance = models.FloatField(max_length=255)
     academic_year = models.CharField(max_length=20)

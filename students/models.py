@@ -6,7 +6,7 @@ class Student(models.Model):
     student_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
-    student_class = models.CharField(max_length=5, blank=True)
+    student_class = models.CharField(max_length=50, blank=True)
     date_of_birth = models.DateField()
     mother_name = models.CharField(max_length=255, blank=True)
     mother_contact = models.CharField(max_length=255, blank=True)

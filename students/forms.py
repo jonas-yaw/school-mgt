@@ -1,12 +1,15 @@
 from django import forms
 
-from .models import Student 
+from .models import Student
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class StudentCreationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=255)
     last_name = forms.CharField(max_length=255,)
-    student_class = forms.CharField(max_length=20)
-    date_of_birth = forms.DateField()
+    student_class = forms.CharField(max_length=50)
+    date_of_birth = forms.DateField(widget=DateInput)
     mother_name = forms.CharField(max_length=255)
     mother_contact = forms.CharField(max_length=255)
     father_name = forms.CharField(max_length=255)
