@@ -1,9 +1,21 @@
+html{
+    box-sizing: border-box;
+    overflow-y: scroll;
+} 
+
 body{
     background-image: url(../img/school-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow-y: scroll;
 }
+
+body::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 
 a{
     text-decoration: none;
@@ -524,7 +536,7 @@ ul{
     height: 80%;
     width: 30%;
     background-color: white;
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -571,3 +583,27 @@ ul{
     border-bottom: 2px solid #333;
     font-weight: 700;
 }
+
+.top-sec-btn {
+    margin: 1% 0 1% 0;
+}
+
+.top-sec-btn div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+@media print {
+    #homePageButton {
+      display: none;
+    }
+  }
+
+  @media print {
+    #printPageButton {
+      display: none;
+    }
+  }
+
+

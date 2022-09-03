@@ -3,6 +3,13 @@
 {% block title %}Receipt{% endblock title %}
 
 {% block content %}
+<section class='top-sec-btn'>
+    <div>
+        <div id="homePageButton"><a href="{% url 'dashboard' %}"><button class="btn-primary btn-primary-wd">Dashboard</button></a></div>
+        <div><a id="printPageButton" href="#" onclick="window.print();" target="_blank"><button class="btn-primary btn-primary-wd">Print</button></a></div>
+    </div>
+</section>
+
     <div class="print-div">
         <div class="print-content">
             <div class="img-logo-div">

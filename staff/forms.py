@@ -12,12 +12,13 @@ class StaffCreationForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=DateInput)
     staff_contact = forms.CharField(max_length=255)
     place_of_residence = forms.CharField(max_length=255)
+    ssnit_number = forms.CharField(max_length=255)
 
 
     class Meta:
         model = Staff
         fields = ('first_name','last_name','role','department','date_of_birth',
-        'staff_contact','place_of_residence')
+        'staff_contact','place_of_residence','ssnit_number')
 
 
 class CsvImportForm(forms.Form):

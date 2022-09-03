@@ -11,6 +11,7 @@ class Staff(models.Model):
     date_of_birth = models.DateField()
     staff_contact = models.CharField(max_length=255, blank=True)
     place_of_residence = models.CharField(max_length=255, blank=True)
+    ssnit_number = models.CharField(max_length=255, blank=True)
     date_employed = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
