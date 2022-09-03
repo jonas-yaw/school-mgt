@@ -8,14 +8,16 @@ fee_type_choices = [
     ('School fees','School fees')
 ]
 
-class ReceiptsForm(forms.Form):
+class ReceiptsForm(forms.ModelForm):
     student_id = forms.CharField(max_length=255)
     first_name = forms.CharField(max_length=255)
     last_name = forms.CharField(max_length=255)
     student_class = forms.CharField(max_length=50)
     fee_type = forms.CharField(max_length=50)
+    amount_paid = forms.FloatField()
     term = forms.CharField(max_length=5)
+    academic_year = forms.CharField(max_length=20)
 
     class Meta:
         model = Receipt
-        fields = ('student_id','first_name','last_name','student_class','fee_type','term')
+        fields = ('student_id','first_name','last_name','student_class','fee_type','amount_paid','term','academic_year')
