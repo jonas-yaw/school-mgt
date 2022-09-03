@@ -46,7 +46,9 @@ def list_and_create(request):
 class StudentUpdateView(UpdateView):
     model = Student
     template_name = 'student_update.html'
-    fields = ['first_name','last_name','year','course']
+    fields = ['first_name','last_name',
+    'student_class','date_of_birth','mother_name',
+    'mother_contact','father_name','father_contact','place_of_residence']
 
 
 class StudentDeleteView(DeleteView):

@@ -26,6 +26,7 @@
                     <th>Staff Contact</th>
                     <th>Place of residence</th>
                     <th>Date employed</th>
+                    <th>SSNIT Number</th>
                     <th class="excludeThisClass"></th>
                     <th class="excludeThisClass"></th>
                 </tr>
@@ -42,8 +43,9 @@
                         <th>{{ staff.staff_contact }}</th>
                         <th>{{ staff.place_of_residence }}</th>
                         <th>{{ staff.date_employed }}</th>
-                        <th class="excludeThisClass"><a href="#">edit</a></th>
-                        <th class="excludeThisClass"><a href="#">del</a></th>
+                        <th>{{ staff.ssnit_number }}</th>
+                        <th class="excludeThisClass"><a href="{% url 'staff_edit' staff.pk %}">edit</a></th>
+                        <th class="excludeThisClass"><a href="{% url 'staff_delete' staff.pk %}">del</a></th>
                     </tr>
                 {% endfor %}
             </tbody>
