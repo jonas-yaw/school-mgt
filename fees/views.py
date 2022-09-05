@@ -33,7 +33,7 @@ def receipts_list_and_create(request):
                 previous_balance = x.balance
 
             default_balance = 0
-            
+
             balance_result_2 = get_default_balance()
             for y in balance_result_2:
                 default_balance = y.total_fees
@@ -56,4 +56,3 @@ def receipts_list_and_create(request):
     # notice this comes after saving the form to pick up new objects
     objects = Receipt.objects.all()
     return render(request, 'receipt_list.html', {'objects': objects, 'form': form})
-
