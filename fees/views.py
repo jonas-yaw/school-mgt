@@ -32,7 +32,8 @@ def receipts_list_and_create(request):
             for x in balance_result_1:
                 previous_balance = x.balance
 
-
+            default_balance = 0
+            
             balance_result_2 = get_default_balance()
             for y in balance_result_2:
                 default_balance = y.total_fees
