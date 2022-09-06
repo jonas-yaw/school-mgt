@@ -41,3 +41,6 @@ class FeesCatalogue(models.Model):
 
     def get_absolute_url(self): 
         return reverse('receipts')
+
+    class Meta:
+        ordering = ['student_class']

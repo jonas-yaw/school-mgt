@@ -22,3 +22,6 @@ class Student(models.Model):
     def get_absolute_url(self): 
         return reverse('students')
 
+    class Meta:
+        ordering = ['-date_enrolled']
+

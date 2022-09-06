@@ -18,6 +18,8 @@ from tablib import Dataset
 from django.db.models import Count
 from django.http import JsonResponse
 
+from django.core.paginator import Paginator 
+
 
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
@@ -40,7 +42,18 @@ def list_and_create(request):
 
     # notice this comes after saving the form to pick up new objects
     objects = Student.objects.all()
-    return render(request, 'student_list.html', {'objects': objects, 'form': form})
+
+    p = Paginator(Student.objects.all(),10)
+    page = request.GET.get('page')
+    student_list = p.get_page(page)
+
+    nums = "a" * student_list.paginator.num_pages
+
+    return render(request, 'student_list.html', {'objects': objects,
+    'student_list':student_list,
+    'nums':nums, 
+    'form': form
+    })
 
 
 class StudentUpdateView(UpdateView):

@@ -33,7 +33,7 @@ ul{
 
 .home-container{
     max-width: 80%;
-    height: 100%;
+    height: 90%;
     margin: 0 auto;
     display: flex;
     flex-flow: column;
@@ -43,11 +43,16 @@ ul{
 
 .home-container h1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 10%;
 }
 
 .btn-group{
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-flow:row wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-group button{
@@ -607,3 +612,20 @@ ul{
   }
 
 
+#btnExport_excel_fees {
+    margin-bottom: 40% !important;
+}
+
+footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: 5%;
+} 
+
+footer p{
+    text-align: center;
+    color: #324960;
+    font-weight: bold;
+}

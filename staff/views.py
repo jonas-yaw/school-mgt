@@ -3,6 +3,7 @@ from .models import Staff
 from .forms import StaffCreationForm
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator 
 
 def staff_list_and_create(request):
     form = StaffCreationForm(request.POST or None)
@@ -11,7 +12,18 @@ def staff_list_and_create(request):
 
     # notice this comes after saving the form to pick up new objects
     objects = Staff.objects.all()
-    return render(request, 'staff_list.html', {'objects': objects, 'form': form})
+
+    p = Paginator(Staff.objects.all(),10)
+    page = request.GET.get('page')
+    staff_list = p.get_page(page)
+
+    nums = "a" * staff_list.paginator.num_pages
+
+    return render(request, 'staff_list.html', {'objects': objects,
+    'staff_list':staff_list,
+    'nums':nums, 
+    'form': form
+    })
 
 
 class StaffUpdateView(UpdateView):

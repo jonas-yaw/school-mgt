@@ -14,7 +14,7 @@
     </div>
 
     <div class="table-wrapper" id="student_table_div">
-        <table class="fl-table" id="table2excel">
+        <table class="fl-table" id="table2excel_staff">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for staff in objects %}
+                {% for staff in staff_list %}
                     <tr>
                         <th>{{ staff.staff_id }}</th>
                         <th>{{ staff.first_name }}</th>
@@ -52,8 +52,26 @@
         </table>
     </div>
 
-    <button id="btnExport_excel" class="btn-primary btn-primary-wd info-btn-1">export to excel</button>
-    <button id="btnExport_pdf"  class="btn-primary btn-primary-wd info-btn-1">export to pdf</button>
+    
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if staff_list.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ fees_list.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for i in nums %}
+	            <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            {% endfor %}
+
+            {% if staff_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ fees_list.next_page_number }}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ fees_list.paginator.num_pages }}">Last &raquo</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <button id="btnExport_excel_staff" class="btn-primary btn-primary-wd info-btn-1">export to excel</button>
 
 
     <!-- modal -->

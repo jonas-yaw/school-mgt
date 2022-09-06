@@ -21,4 +21,7 @@ class Staff(models.Model):
     def get_absolute_url(self): 
         return reverse('staff')
 
+    class Meta:
+        ordering = ['-date_employed']
+
 

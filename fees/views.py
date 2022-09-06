@@ -4,6 +4,10 @@ from .forms import ReceiptsForm
 from .models import Receipt,FeesCatalogue
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+
+#data pagination modules 
+from django.core.paginator import Paginator 
 
 def receipts_list_and_create(request):
     form = ReceiptsForm(request.POST or None)
@@ -55,4 +59,48 @@ def receipts_list_and_create(request):
 
     # notice this comes after saving the form to pick up new objects
     objects = Receipt.objects.all()
-    return render(request, 'receipt_list.html', {'objects': objects, 'form': form})
+
+    p = Paginator(Receipt.objects.all(),10)
+    page = request.GET.get('page')
+    fees_list = p.get_page(page)
+
+    nums = "a" * fees_list.paginator.num_pages
+
+
+    return render(request, 'receipt_list.html', {'objects': objects,
+    'fees_list':fees_list,
+    'nums':nums, 
+    'form': form
+    })
+
+
+
+def fees_catalogue_list_and_create(request):
+    form = FeesCatalogueForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+
+    # notice this comes after saving the form to pick up new objects
+    p = Paginator(FeesCatalogue.objects.all(),10)
+    page = request.GET.get('page')
+    fees_catalogue_list = p.get_page(page)
+
+    nums = "a" * fees_catalogue_list.paginator.num_pages
+
+    return render(request, 'fees_catalogue_list.html', {
+    'fees_catalogue_list':fees_catalogue_list,
+    'nums':nums, 
+    'form': form
+    })
+
+
+class FeesCatalogueUpdateView(UpdateView):
+    model = FeesCatalogue
+    template_name = 'fees_catalogue_update.html'
+    fields = ['student_class','term','academic_year','total_fees','fee_type']
+
+
+class FeesCatalogueDeleteView(DeleteView):
+    model = FeesCatalogue
+    template_name = 'fees_catalogue_delete.html'
+    success_url = reverse_lazy('fees_catalogue')

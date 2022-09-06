@@ -1,52 +1,39 @@
 {% extends 'base.html' %}
 
-{% block title %}Students{% endblock title %}
+{% block title %}Fees Catalogue{% endblock title %}
 
 {% block content %}
 <div class="dashboard-container">
     <div class="top-nav">
         <h1><a href="{% url 'dashboard' %}">SURE START INTERNATIONAL SCHOOL</a></h1>
-        <p><a href="{% url 'dashboard' %}">Dashboard</a>/<a href="{% url 'students' %}" class="active-link">Students</a></p>
+        <p><a href="{% url 'dashboard' %}">Dashboard</a>/<a href="{% url 'fees_catalogue' %}" class="active-link">Fees Catalogue</a></p>
     </div>
 
     <div class="add-div">
-        <a href="#" id="modal-btn"><button class="btn-primary btn-primary-wd">Add Student</button></a>
-        <a href="{% url 'upload_csv' %}"><button class="btn-primary btn-primary-wd">Import students</button></a>
+        <a href="#" id="modal-btn"><button class="btn-primary btn-primary-wd">Add Fees</button></a>
     </div>
 
     <div class="table-wrapper" id="student_table_div">
         <table class="fl-table" id="table2excel">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
+                    <th>Student Class</th>
+                    <th>Term</th>
                     <th>Last Name</th>
-                    <th>Student class</th>
-                    <th>Date of Birth</th>
-                    <th>Mother Name</th>
-                    <th>Mother Contact</th>
-                    <th>Father Name</th>
-                    <th>Father Contact</th>
-                    <th>Place of residence</th>
-                    <th>Enrollment Date</th>
-                    <th class="excludeThisClass"></th>
+                    <th>Academic Year</th>
+                    <th>Total Fees</th>
+                    <th>Fee type</th>
                     <th class="excludeThisClass"></th>
                 </tr>
             </thead>
             <tbody>
-                {% for student in student_list %}
+                {% for fee in fees_catalogue_list %}
                     <tr>
-                        <th>{{ student.student_id }}</th>
-                        <th>{{ student.first_name }}</th>
-                        <th>{{ student.last_name }}</th>
-                        <th>{{ student.student_class }}</th>
-                        <th>{{ student.date_of_birth }}</th>
-                        <th>{{ student.mother_name }}</th>
-                        <th>{{ student.mother_contact }}</th>
-                        <th>{{ student.father_name }}</th>
-                        <th>{{ student.father_contact }}</th>
-                        <th>{{ student.place_of_residence }}</th>
-                        <th>{{ student.date_enrolled }}</th>
+                        <th>{{ fee.student_class }}</th>
+                        <th>{{ fee.term }}</th>
+                        <th>{{ fee.academic_year }}</th>
+                        <th>{{ fee.total_fees }}</th>
+                        <th>{{ fee.fee_type }}</th>
                         <th class="excludeThisClass"><a href="{% url 'student_edit' student.pk %}">edit</a></th>
                         <th class="excludeThisClass"><a href="{% url 'student_delete' student.pk %}">del</a></th>
                     </tr>
