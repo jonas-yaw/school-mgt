@@ -16,23 +16,17 @@ from django.http import HttpResponse
 from tablib import Dataset
 
 from django.db.models import Count
+from users.models import CustomUser
+
 from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 
 from django.core.paginator import Paginator 
 
 
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
-
-""" class StudentListView(ListView):
-    model = Student
-    template_name = 'student_list.html'
-
-
-class StudentCreateView(CreateView):
-    model = Student
-    template_name = 'student_list.html'
-    fields = '__all__' """
 
 
 def list_and_create(request):
@@ -63,11 +57,23 @@ class StudentUpdateView(UpdateView):
     'student_class','date_of_birth','mother_name',
     'mother_contact','father_name','father_contact','place_of_residence']
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
+
 
 class StudentDeleteView(DeleteView):
     model = Student
     template_name = 'student_delete.html'
     success_url = reverse_lazy('students')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
 
 
 def simple_upload(request):

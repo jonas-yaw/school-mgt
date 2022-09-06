@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Staff 
+from users.models import CustomUser
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from .forms import StaffCreationForm
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
@@ -32,8 +35,19 @@ class StaffUpdateView(UpdateView):
     fields = ['first_name','last_name',
     'role','department','date_of_birth','staff_contact','place_of_residence','ssnit_number']
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
+
 
 class StaffDeleteView(DeleteView):
     model = Staff
     template_name = 'staff_delete.html'
     success_url = reverse_lazy('staff')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)

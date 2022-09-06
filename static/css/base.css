@@ -539,7 +539,8 @@ ul{
 
 .print-content{
     height: 80%;
-    width: 30%;
+    max-width: 70%;
+    margin: 0 auto;
     background-color: white;
     margin-top: 3%;
     display: flex;
@@ -550,7 +551,7 @@ ul{
 .img-logo-div{
     max-width: 80%;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 3%;
 }
 
 .img-logo-div img{
@@ -560,7 +561,6 @@ ul{
 
 .receipt-table{
     width: 100%;
-    border: 1px solid red;
     margin-top: 50%;
 }
 
@@ -570,7 +570,7 @@ ul{
     Styles for the billing table
 ------------------------------------- */
 .invoice {
-    margin-top: 60px;
+    margin-top: 1px;
     text-align: left;
     width: 100%;
 }
@@ -598,6 +598,26 @@ ul{
     flex-flow: row wrap;
     justify-content: space-around;
 }
+
+.main-table-div{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-wrap{
+    margin-top: 5%;
+    width: 90%;
+}
+
+.official-receipt{
+    margin-top: 5%;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
 
 @media print {
     #homePageButton {

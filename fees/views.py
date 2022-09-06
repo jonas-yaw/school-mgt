@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from students.models import Student
-from .forms import ReceiptsForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
+from .forms import ReceiptsForm,FeesCatalogueForm
 from .models import Receipt,FeesCatalogue
+from users.models import CustomUser
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 #data pagination modules 
@@ -94,13 +97,23 @@ def fees_catalogue_list_and_create(request):
     })
 
 
-class FeesCatalogueUpdateView(UpdateView):
+class FeesCatalogueUpdateView(LoginRequiredMixin,UpdateView):
     model = FeesCatalogue
     template_name = 'fees_catalogue_update.html'
     fields = ['student_class','term','academic_year','total_fees','fee_type']
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
-class FeesCatalogueDeleteView(DeleteView):
+
+class FeesCatalogueDeleteView(LoginRequiredMixin,DeleteView):
     model = FeesCatalogue
     template_name = 'fees_catalogue_delete.html'
     success_url = reverse_lazy('fees_catalogue')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="jonas"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
