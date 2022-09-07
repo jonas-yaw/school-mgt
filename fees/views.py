@@ -59,7 +59,8 @@ def receipts_list_and_create(request):
 
 
             url = reverse('dashboard')
-            return render(request, 'receipt.html', {'objects': instance})
+            message = 'Payment Successful'
+            return render(request, 'receipt.html', {'objects': instance,'message':message})
         else:
             print('Not a Student')
             message = 'Not a Student'
