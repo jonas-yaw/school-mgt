@@ -58,7 +58,7 @@ class StudentUpdateView(UpdateView):
     'mother_contact','father_name','father_contact','place_of_residence']
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user != CustomUser.objects.get(username="jonas"):
+        if self.request.user != CustomUser.objects.get(username="admin"):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
@@ -70,7 +70,7 @@ class StudentDeleteView(DeleteView):
     success_url = reverse_lazy('students')
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user != CustomUser.objects.get(username="jonas"):
+        if self.request.user != CustomUser.objects.get(username="admin"):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 

@@ -110,7 +110,7 @@ class FeesCatalogueUpdateView(LoginRequiredMixin,UpdateView):
     fields = ['student_class','term','academic_year','total_fees','fee_type']
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user != CustomUser.objects.get(username="jonas"):
+        if self.request.user != CustomUser.objects.get(username="admin"):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
@@ -121,6 +121,6 @@ class FeesCatalogueDeleteView(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('fees_catalogue')
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user != CustomUser.objects.get(username="jonas"):
+        if self.request.user != CustomUser.objects.get(username="admin"):
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
