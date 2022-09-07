@@ -20,7 +20,7 @@ def receipts_list_and_create(request):
 
         querySet = Student.objects.filter(student_id=instance.student_id,first_name=instance.first_name,last_name=instance.last_name)
         
-        print(querySet)
+        #print(querySet)
         if querySet:  
             print('Student validated')      
             def get_balance():
@@ -38,7 +38,7 @@ def receipts_list_and_create(request):
                 )
     
             balance_result_1 = get_balance()
-            print(balance_result_1)
+            #print(balance_result_1)
             for x in balance_result_1:
                 previous_balance = x.balance
 
@@ -83,6 +83,17 @@ def receipts_list_and_create(request):
     'nums':nums, 
     'form': form
     })
+
+
+class ReceiptDeleteView(LoginRequiredMixin,DeleteView):
+    model = Receipt
+    template_name = 'receipt_delete.html'
+    success_url = reverse_lazy('receipts')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user != CustomUser.objects.get(username="admin"):
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
 
 
 
