@@ -10,7 +10,7 @@
     </div>
 
     <div class="top-buttons-div">
-<!--         <div>
+     <div>
             <form action="" method="post">
                 {% csrf_token %}
                 {% for field in search_form %}
@@ -23,7 +23,7 @@
                 {% endfor %}
                 <button type="submit" class="btn-primary primary-1" value="save" name="search">Search</button>
             </form>
-        </div> -->
+        </div> 
         <div class="add-div">
             <a href="#" id="modal-btn"><button class="btn-primary btn-primary-wd">Add Student</button></a>
             <a href="{% url 'upload_csv' %}"><button class="btn-primary btn-primary-wd">Import students</button></a>

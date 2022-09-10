@@ -41,6 +41,8 @@ def receipts_list_and_create(request):
                 fee_type__iexact = instance.fee_type
                 )
     
+            previous_balance = 0 
+            
             balance_result_1 = get_balance()
             #print(balance_result_1)
             for x in balance_result_1:
