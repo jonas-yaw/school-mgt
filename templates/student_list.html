@@ -9,7 +9,7 @@
         <p><a href="{% url 'dashboard' %}">Dashboard</a>/<a href="{% url 'students' %}" class="active-link">Students</a></p>
     </div>
 
-    <div class="top-buttons-div">
+<!--     <div class="top-buttons-div">
      <div>
             <form action="" method="post">
                 {% csrf_token %}
@@ -23,7 +23,7 @@
                 {% endfor %}
                 <button type="submit" class="btn-primary primary-1" value="save" name="search">Search</button>
             </form>
-        </div> 
+        </div>  -->
         <div class="add-div">
             <a href="#" id="modal-btn"><button class="btn-primary btn-primary-wd">Add Student</button></a>
             <a href="{% url 'upload_csv' %}"><button class="btn-primary btn-primary-wd">Import students</button></a>
