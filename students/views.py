@@ -23,6 +23,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 
 from django.core.paginator import Paginator 
+import datetime 
 
 
 class DashboardView(TemplateView):
@@ -90,31 +91,39 @@ class StudentDeleteView(DeleteView):
 def simple_upload(request):
     form = CsvImportForm(request.POST or None)
 
+    info = '' 
     if request.method == 'POST':
-        new_student = request.FILES['excel_file']
+        new_student = request.FILES['excel_upload']
 
+        
 
         if not new_student.name.endswith('xlsx'):
-            messages.info(request,'wrong format')
-            return render(request,'import_data.html')
+            info = 'Wrong Format'
+        else:
+            imported_data = pd.read_excel(new_student)
 
-        imported_data = pd.read_excel(new_student)
-
-        count = len(imported_data)-1
-
-        for data in imported_data.index:
-           new_record = imported_data.iloc[count].tolist()
-           Student.objects.update_or_create(
-           first_name = new_record[0],
-           last_name = new_record[1],
-           year = new_record[2],
-           course = new_record[3]
-           )
-           count = count - 1
-           
+            count = len(imported_data)-1
 
 
-    return render(request,'import_data.html',{'form': form})
+            for data in imported_data.index:
+                new_record = imported_data.iloc[count].tolist()
+                Student.objects.update_or_create(
+                first_name = new_record[1],
+                last_name = new_record[2],
+                student_class = new_record[3],
+                date_of_birth = new_record[4],
+                mother_name = new_record[5],
+                mother_contact = new_record[6],
+                father_name = new_record[7],
+                father_contact = new_record[8],
+                place_of_residence = new_record[9],
+                date_enrolled = new_record[4]
+                )
+                count = count - 1
+                
+
+
+    return render(request,'import_data.html',{'form': form,'info':info})
 
 
 
