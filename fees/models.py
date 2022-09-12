@@ -32,7 +32,7 @@ class Receipt(models.Model):
 class FeesCatalogue(models.Model):
     student_class = models.CharField(max_length=50)
     term = models.CharField(max_length=5)
-    academic_year = models.CharField(max_length=20)
+    academic_year = models.CharField(max_length=50)
     total_fees  = models.FloatField(max_length=255)
     fee_type = models.CharField(max_length=50)
 
