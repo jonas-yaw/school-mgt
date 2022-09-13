@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from email.policy import default
 from pathlib import Path
 import os 
 
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'westside.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-ON_HEROKU = os.environ.get('ON_HEROKU')
+""" ON_HEROKU = os.environ.get('ON_HEROKU')
 HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
 if ON_HEROKU:
@@ -99,7 +100,18 @@ if ON_HEROKU:
 else:
     DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)} """
+
+DATABASES = {
+    'default' : {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd9bvh0f5h0p8e2',
+        'USER': 'fkvpsgylccfxai' ,
+        'PASSWORD': 'ac1ba4c6bce3b1532b5b43cfa7027fe5807fdb05d3008be9b5d9b7e48493020e',
+        'HOST': 'ec2-107-23-76-12.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -170,5 +182,5 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 r"^https://\w+\.domain\.com$",
 ]
 
-options = DATABASES['default'].get('OPTIONS', {})
-options.pop('sslmode', None)
+#options = DATABASES['default'].get('OPTIONS', {})
+#options.pop('sslmode', None)
