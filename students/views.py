@@ -36,15 +36,6 @@ def list_and_create(request):
         form.save()
 
     
-    search_form = SearchForm(request.POST or None)
-    if request.method == 'POST' and search_form.is_valid():
-        instance = search_form.save(commit=False)
-        
-        searched_students = Student.objects.filter(first_name__contains=instance.first_name)
-        instance.save()
-
-        return render(request, 'student_list_search.html', {'searched_students': searched_students})
-
     # notice this comes after saving the form to pick up new objects
     objects = Student.objects.all()
 
@@ -54,12 +45,41 @@ def list_and_create(request):
 
     nums = "a" * student_list.paginator.num_pages
 
+    search_form = SearchForm(request.GET or None)
+    if request.method == 'GET' and search_form.is_valid():
+        student_name = request.GET['student_name']
+        print(student_name)
+
+        searched_students = Student.objects.filter(first_name__icontains=student_name) | Student.objects.filter(last_name__icontains=student_name)
+
+        pagn = Paginator(searched_students.all(),10)
+        page1 = request.GET.get('page')
+        searched_students_list = pagn.get_page(page1)
+
+        numbs = "a" * searched_students_list.paginator.num_pages
+        return render(request, 'student_list_search.html', {
+        'searched_students': searched_students_list,
+        'numbs':numbs
+        })
+
+
     return render(request, 'student_list.html', {'objects': objects,
     'student_list':student_list,
     'nums':nums, 
     'form': form,
     'search_form':search_form
     })
+
+
+def student_search(request):
+    search_form = SearchForm(request.GET or None)
+    if request.method == 'GET' and search_form.is_valid():
+        student_name = request.GET['student_name']
+
+        searched_students = Student.objects.filter(first_name__icontains=student_name) | Student.objects.filter(last_name__icontains=student_name)
+
+        return render(request, 'student_list_search.html', {'searched_students': searched_students})
+
 
 
 class StudentUpdateView(UpdateView):
@@ -94,8 +114,6 @@ def simple_upload(request):
     info = '' 
     if request.method == 'POST':
         new_student = request.FILES['excel_upload']
-
-        
 
         if not new_student.name.endswith('xlsx'):
             info = 'Wrong Format'
