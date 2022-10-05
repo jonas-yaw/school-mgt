@@ -106,10 +106,10 @@ DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)} """
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd9bvh0f5h0p8e2',
-        'USER': 'fkvpsgylccfxai' ,
-        'PASSWORD': 'ac1ba4c6bce3b1532b5b43cfa7027fe5807fdb05d3008be9b5d9b7e48493020e',
-        'HOST': 'ec2-107-23-76-12.compute-1.amazonaws.com',
+        'NAME': 'dau2v8196a01ot',
+        'USER': 'olovujhmvbhbfz' ,
+        'PASSWORD': '16f797fcde6f03bf10c1025cb6ccd8f19112e67d9b76e68fef555be83e1440a3',
+        'HOST': 'ec2-44-205-177-160.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
