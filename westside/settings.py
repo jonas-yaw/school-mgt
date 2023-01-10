@@ -104,20 +104,20 @@ else:
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)} """
 
 #FOR PRODUCTION ONLY
-"""
+
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dau2v8196a01ot',
-        'USER': 'olovujhmvbhbfz' ,
-        'PASSWORD': '16f797fcde6f03bf10c1025cb6ccd8f19112e67d9b76e68fef555be83e1440a3',
-        'HOST': 'ec2-44-205-177-160.compute-1.amazonaws.com',
+        'NAME': 'det6turt41hmp2',
+        'USER': 'zcnxzpppbkfupc' ,
+        'PASSWORD': 'd7ede64971349c44ccc32ec306fe265db34199676bdebc1b2f25c9b596c90db3',
+        'HOST': 'ec2-34-207-12-160.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
-"""
 
-DATABASES = {
+
+""" DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
 		'NAME': 'SURE_START_INTL',
@@ -126,7 +126,7 @@ DATABASES = {
 		'HOST':'localhost',
 		'PORT':'3306',
 	}
-}
+} """
 
  
 """ DATABASES = {
