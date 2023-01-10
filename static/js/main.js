@@ -12,3 +12,5 @@ window.onclick = function(e){
     modal.style.display = "none"
   }
 }
+
+

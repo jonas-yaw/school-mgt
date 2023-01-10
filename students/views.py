@@ -50,7 +50,7 @@ def list_and_create(request):
         student_name = request.GET['student_name']
         print(student_name)
 
-        searched_students = Student.objects.filter(first_name__icontains=student_name) | Student.objects.filter(last_name__icontains=student_name)
+        searched_students = Student.objects.filter(first_name__icontains=student_name) | Student.objects.filter(last_name__icontains=student_name) | Student.objects.filter(student_class__icontains=student_name)
 
         pagn = Paginator(searched_students.all(),10)
         page1 = request.GET.get('page')

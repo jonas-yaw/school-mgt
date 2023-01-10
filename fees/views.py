@@ -86,9 +86,9 @@ def receipts_list_and_create(request):
     search_form = SearchForm(request.GET or None)
     if request.method == 'GET' and search_form.is_valid():
         student_name = request.GET['student_name']
-        print(student_name)
+        #print(student_name)
 
-        searched_students = Receipt.objects.filter(first_name__icontains=student_name) | Receipt.objects.filter(last_name__icontains=student_name)
+        searched_students = Receipt.objects.filter(first_name__icontains=student_name) | Receipt.objects.filter(last_name__icontains=student_name) | Receipt.objects.filter(student_class__icontains=student_name)
 
         pagn = Paginator(searched_students.all(),10)
         page1 = request.GET.get('page')

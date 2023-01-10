@@ -1,6 +1,9 @@
 (function($) {
 
-
+  $(document).ready( function () {
+    $('#table2excel').DataTable();
+    console.log('Hi');
+  } );
 
   $("#btnExport_excel").click(function() {
     let today = new Date()

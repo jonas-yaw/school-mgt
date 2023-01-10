@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'import_export',
     'corsheaders',
+    'django_table_sort',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +104,7 @@ else:
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)} """
 
 #FOR PRODUCTION ONLY
+"""
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -113,6 +115,18 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+"""
+
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'SURE_START_INTL',
+		'USER': 'root',
+		'PASSWORD': 'Blaccape@123',
+		'HOST':'localhost',
+		'PORT':'3306',
+	}
+}
 
  
 """ DATABASES = {
@@ -120,7 +134,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
-} """
+}  """
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
